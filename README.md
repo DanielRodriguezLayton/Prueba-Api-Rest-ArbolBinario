@@ -24,8 +24,8 @@ _install environment virtual:
 
 pip install virtualenv
 *********** tambien, para administrar facilmente los ambientes virtuales:
-pip install virtualenvwrapper(linux)
-pip install virtualenvwrapper-win(windows)
+##pip install virtualenvwrapper(linux)
+##pip install virtualenvwrapper-win(windows)
 
 
 crear virtualenv: mkvirtualenv FlaskApiRest -p C:\Python36\python.exe
