@@ -60,12 +60,17 @@ http://localhost:83/ancestro
 
 ### Nota 📋
 _Se deben Desplegar:
-python webapp.py en una consola
-python app3.py en otra consola aparte
-Ambas dentro del ambiente virtual.
 
+python webapp.py en una consola
+
+python app3.py en otra consola aparte
+
+Ambas dentro del ambiente virtual:
+
+FlaskApiRest
 
 Se carga archivo Python con la logica realizada:
+
 _Arbol-binario.py
 
 ## Construido con 🛠️
@@ -77,4 +82,6 @@ _Menciona las herramientas que utilizaste para crear tu proyecto_
 #Conclusiones
 _Al momento de abordar el reto se empleo el Framework django 2.2, sin embargo para un manejo más sencillo y minimalista se decidio trabajar con el framework Flask.
 
-_No se carga el Api Rest de Django para no generar confusiones sin embargo se subira a un nuevo Repositorio y se adjuntara el Enlace(Posteriormente)
+_No se carga el Api Rest de Django para no generar confusiones sin embargo se subira a un nuevo Repositorio y se adjuntara:
+
+Enlace(Posteriormente)
