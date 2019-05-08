@@ -24,6 +24,14 @@ nodosHijos = {
     "nodo1":6,
     "nodo2":1
 }
+
+"""Otro ejemplo de consulta de Ancestro de dos Nodos 
+nodosHijos = {
+    "raiz":8,
+    "nodo1":1,
+    "nodo2":14
+}
+"""
 #Decorador
 @app.route('/', methods=['GET'])
 def get_nodos():

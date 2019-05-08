@@ -107,6 +107,9 @@ class BinarySearchTree:
             nodeList = nodeList + self.__InOrderTraversal(curr_node.getRight())
         return nodeList
     
+    def getRoot(self):
+        return self.root
+
     #Para mostrar los datos
     def __str__(self):
         list = self.__InOrderTraversal(self.root)
@@ -114,18 +117,6 @@ class BinarySearchTree:
         for x in list:
             str = str + " " + x.getLabel().__str__()
         return str
-
-#lLAMO LA FUNCIÓN PARA Construcción del arbol en una variable
-t = BinarySearchTree()
-# Guardo el Objeto Request
-m = arbol()
-#Se Convierte en Diccionario de Python el objeto "m"
-a = json.loads(m)
-
-#Recorremos el diccionario
-# Insertamos los valores en la función Construcción del arbol
-for dic in a.values():
-    t.insert(dic)
 
 #Recorrido InPreOrden
 #pre-orden: nodo actual -> rama izquierda  -> rama derecha
@@ -141,6 +132,7 @@ def InPreOrder(curr_node):
 def InPreOrder2(root,curr_node,curr_nodes):
     """Variable contador"""
     count = 0
+    ancest = 0
     nodeList = []
     nodeLists = []
     if curr_node is not None:
@@ -180,11 +172,11 @@ def InPreOrder2(root,curr_node,curr_nodes):
             """Como las listas terminan teniendo la misma longitud
             Si es mayor a 4, el ancestro es el valor de la lista en [0]"""
             if(len(nodeList) >= 4 or count > 4):
-                Ancestro = nodeList[0]            
-                return Ancestro
+                ancest = nodeList[0]            
+                return ancest
             else:
-                Ancestro = nodeLists[1]            
-                return Ancestro
+                ancest = nodeLists[1]            
+                return ancest
         if(nodeList < nodeLists):
             for t in reversed(nodeLists):
                 """Variable contador"""
@@ -196,14 +188,42 @@ def InPreOrder2(root,curr_node,curr_nodes):
             """Como las listas terminan teniendo la misma longitud
             Si es mayor a 4, el ancestro es el valor de la lista en [0]"""
             if(len(nodeLists) >= 4 or count > 4):
-                Ancestro = nodeLists[0]            
-                return Ancestro
+                ancest = nodeLists[0]            
+                return ancest
             else:
-                Ancestro = nodeLists[1]            
-                return Ancestro
-    """Cuando la longitud es la misma en ambas Listas"""            
-    #else:
+                ancest = nodeLists[1]            
+                return ancest                
+    else:
         #print(len(nodeList), len(nodeLists))
+        """Como las listas terminan teniendo la misma longitud
+        Si es mayor a 4, el ancestro es el valor de la lista en [0]"""
+        if(len(nodeList) >= 4 or count > 4):
+            ancest = nodeList[0]            
+            return ancest
+        else:
+            ancest = nodeLists[1]            
+            return ancest
+        """Como las listas terminan teniendo la misma longitud
+        Si es mayor a 4, el ancestro es el valor de la lista en [0]"""
+        if(len(nodeLists) >= 4 or count > 4):
+            ancest = nodeLists[0]            
+            return ancest
+        else:
+            ancest = nodeLists[1]            
+            return ancest
+
+
+"""lLAMO LA FUNCIÓN PARA Construcción del arbol en una variable """
+t = BinarySearchTree()
+# Guardo el Objeto Request
+m = arbol()
+#Se Convierte en Diccionario de Python el objeto "m"
+a = json.loads(m)
+
+#Recorremos el diccionario
+# Insertamos los valores en la función Construcción del arbol
+for dic in a.values():
+    t.insert(dic)
 
 """Para calcular el Ancestro Guardo el Objeto Request """
 h = nodosHijos()
@@ -211,19 +231,19 @@ h = nodosHijos()
 listhijos = json.loads(h)
 #Recorremos el diccionario
 v = list(listhijos.values())
-vraiz = 8
-vnodo1 = v[1]
-vnodo2 = v[2]
+vraiz = v[2]
+vnodo1 = v[0]
+vnodo2 = v[1]
 
 #Calcular ancestro 
-"""
+
 if(t.getNode(vnodo1) is not None and t.getNode(vnodo2) is not None):
-    AnCestro = InPreOrder2(t.getNode(vraiz),t.getNode(vnodo1),t.getNode(vnodo2))
+    ancestro = InPreOrder2(t.getNode(vraiz),t.getNode(vnodo1),t.getNode(vnodo2))
     #print(InPreOrder2(t.getNode(8),t.getNode(1),t.getNode(1)))    
 else:
-    print ("Not exist node! ó el nodo no existe en el Arbol")
+    ancestro = "Not exist node! ó el nodo no existe en el Arbol"
 
-"""
+
 
 #Creo una Url que me mostrara el Arbol Binario Generado
 @app.route('/arbol', methods=['GET'])
@@ -233,7 +253,7 @@ def get_arbol():
 #Creo una Url que me mostrara el Ancestro de los dos nodos obtenidos en el elemento request
 @app.route('/ancestro', methods=['GET'])
 def get_ancestro():
-    return jsonify(Ancestro)
+    return jsonify(ancestro)
 
 #Se inicia el servicio en otro puerto
 if __name__ == '__main__':
