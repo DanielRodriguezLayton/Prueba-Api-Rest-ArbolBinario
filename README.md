@@ -59,3 +59,6 @@ _Arbol-binario.py
 _Menciona las herramientas que utilizaste para crear tu proyecto_
 
 * [flask](http://flask.pocoo.org/) - El framework web usado
+
+#Conclusiones
+_Al momento de abordar el reto se empleo el Framework django 2.2, sin embargo para un manejo más sencillo y minimalista se decidio trabajar con el framework Flask.
