@@ -79,7 +79,7 @@ _Menciona las herramientas que utilizaste para crear tu proyecto_
 
 * [flask](http://flask.pocoo.org/) - El framework web usado
 
-#Conclusiones
+## Conclusiones
 _Al momento de abordar el reto se empleo el Framework django 2.2, sin embargo para un manejo más sencillo y minimalista se decidio trabajar con el framework Flask.
 
 _No se carga el Api Rest de Django para no generar confusiones sin embargo se subira a un nuevo Repositorio y se adjuntara:
